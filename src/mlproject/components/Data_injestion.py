@@ -3,7 +3,7 @@ import sys
 from src.mlproject.Exception import CustomException
 from src.mlproject.Logger import logging
 from src.mlproject.utils import read_sql_data
-import pandas 
+import pandas  as pd
 from sklearn.model_selection import train_test_split
 
 
@@ -25,7 +25,7 @@ class DataIngestion():
     def initiate_data_ingestion(self):
         logging.info("Initiating data injestion phase")
         try:
-            df =read_sql_data()
+            df =pd.read_csv(os.path.join('notebook/data','raw.csv'))
             logging.info("started reading the sql data")
             os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
 
